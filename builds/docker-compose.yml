@@ -9,22 +9,23 @@ nginx:
 server1:
     build: ~/Cyphor/Cyphor-Server
     links:
-        - mongodb
+        - mongo
     ports:
         - "3001"
 server2:
     build: ~/Cyphor/Cyphor-Server
     links:
-        - mongodb
+        - mongo
     ports:
         - "3001"
 server3:
     build: ~/Cyphor/Cyphor-Server
     links:
-        - mongodb
+        - mongo
     ports:
         - "3001"
-mongodb:
+mongo:
     image: mongo
+    expose: "27017"
     ports:
         - "27017"
