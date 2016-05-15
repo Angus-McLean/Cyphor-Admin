@@ -1,5 +1,5 @@
 nginx:
-    build: ~/Cyphor/Cyphor-Website/nginx
+    build: ~/Cyphor/Cyphor-Website
     links:
         - server1:server1
         - server2:server2
@@ -7,19 +7,19 @@ nginx:
     ports:
         - "80:80"
 server1:
-    build: ~/Cyphor/Cyhpor-Server/server
+    build: ~/Cyphor/Cyhpor-Server
     links:
         - mongodb
     ports:
         - "3001"
 server2:
-    build: ~/Cyphor/Cyhpor-Server/server
+    build: ~/Cyphor/Cyhpor-Server
     links:
         - mongodb
     ports:
         - "3001"
 server3:
-    build: ~/Cyphor/Cyhpor-Server/server
+    build: ~/Cyphor/Cyhpor-Server
     links:
         - mongodb
     ports:
