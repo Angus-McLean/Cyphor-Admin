@@ -25,4 +25,7 @@ server3:
     ports:
         - "3001"
 mongodb:
-    image: cretzel/rpi-mongodb
+    image: mongo
+    ports:
+        - "27017:27017"
+    command: "--smallfiles"
