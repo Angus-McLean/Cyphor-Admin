@@ -1,0 +1,30 @@
+nginx:
+    build: ./nginx
+    links:
+        - server1:server1
+        - server2:server2
+        - server3:server3
+    ports:
+        - "80:80"
+server1:
+    build: ./server
+    links:
+        - mongodb
+    ports:
+        - "8080"
+server2:
+    build: ./server
+    links:
+        - mongodb
+    ports:
+        - "8080"
+server3:
+    build: ./server
+    links:
+        - mongodb
+    ports:
+        - "8080"
+mongodb:
+    image: mongodb
+    ports:
+        - "6379"
