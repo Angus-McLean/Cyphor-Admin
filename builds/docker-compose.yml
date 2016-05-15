@@ -26,7 +26,6 @@ server3:
         - "3001"
 mongo:
     image: mongo
-    expose:
-        - "27017"
     ports:
         - "27017"
+    command: --smallfiles
