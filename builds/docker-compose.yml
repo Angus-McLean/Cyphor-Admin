@@ -9,23 +9,20 @@ nginx:
 server1:
     build: ~/Cyphor/Cyphor-Server
     links:
-        - mongo
+        - mongodb
     ports:
         - "3001"
 server2:
     build: ~/Cyphor/Cyphor-Server
     links:
-        - mongo
+        - mongodb
     ports:
         - "3001"
 server3:
     build: ~/Cyphor/Cyphor-Server
     links:
-        - mongo
+        - mongodb
     ports:
         - "3001"
-mongo:
-    image: mongo
-    ports:
-        - "27017"
-    command: --smallfiles
+mongodb:
+    image: cretzel/rpi-mongodb
