@@ -1,15 +1,22 @@
 nginx:
     build: ~/Cyphor/Cyphor-Website
+    dockerfile: Dockerfile_dev
+    volumes:
+        - "~/Cyphor/Cyphor-Website:/Cyphor/Cyphor-Website"
     links:
         - server1:server1
     ports:
         - "80:80"
 server1:
     build: ~/Cyphor/Cyphor-Server
+    dockerfile: Dockerfile_dev
+    volumes:
+        - "~/Cyphor/Cyphor-Server:/src"
     links:
         - mongodb
     ports:
         - "3001"
+        - "8080:8080"
 mongodb:
     image: mongo
     ports:
