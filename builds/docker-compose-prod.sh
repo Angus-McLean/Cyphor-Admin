@@ -22,6 +22,15 @@ sudo apt-get update -y
 sudo apt-get install -y docker-engine
 sudo service docker start
 
+# Add user to docker group and reload permissions
+sudo usermod -aG docker $(whoami)
+. ~/.profile
+## may need to manually log out and log back in if you can't connect to docker daemon
+
+# Install docker compose
+sudo /bin/bash -c "curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+sudo /bin/bash -c "chmod +x /usr/local/bin/docker-compose"
+
 # Change directory :
 mkdir ~/Cyphor
 cd ~/Cyphor
@@ -36,7 +45,7 @@ git clone https://angus-mclean:$gitpassword@github.com/Angus-McLean/Cyphor-Websi
 
 # Install bower_components and node_modules
 cd Cyphor-Website && bower install && cd ..
-cd Cyphor-Server && npm install && cd ..
+cd Cyphor-Server && sudo npm install && cd ..
 
 # Build Docker images
 docker-compose -f Cyphor-Admin/builds/docker-compose.yml build
