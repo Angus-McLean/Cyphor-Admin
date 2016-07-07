@@ -8,7 +8,10 @@ nginx:
     ports:
         - "80:80"
 server1:
-    build: ~/Cyphor/Cyphor-Server
+    build:
+        dockerfile: ~/Cyphor/Cyphor-Server
+        args:
+            NODE_ENV: development
     dockerfile: Dockerfile_dev
     volumes:
         - "~/Cyphor/Cyphor-Server:/src"
@@ -19,6 +22,8 @@ server1:
         - "8080:8080"
 mongodb:
     image: mongo
+    volumes:
+        - "~/data/db:/data/db"
     ports:
         - "27017:27017"
     command: "--smallfiles"
