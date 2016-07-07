@@ -15,5 +15,4 @@ docker run --name mongodb --expose=27017 -p 27017:27017 -d mongo mongod
 docker run -d --name nginx -p 80:80 --link server:server angus/nginx
 
 # Start the server container from anguscypho/test image
-docker run -d --name server -p 3001 --link mongodb:mongodb -e DB_URI=mongodb://$(docker-machine ip):27017\
- -e NODE_ENV=development anguscyphor/test
+docker run -d --name server -p 3001 --link mongodb:mongodb -e DB_URI=mongodb://$(docker-machine ip):27017 -e NODE_ENV=development anguscyphor/test
