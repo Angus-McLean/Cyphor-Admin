@@ -1,0 +1,17 @@
+nginx:
+    build: ~/Cyphor/Cyphor-Website
+    links:
+        - server1:server1
+    ports:
+        - "80:80"
+server1:
+    build: ~/Cyphor/Cyphor-Server
+    links:
+        - mongodb
+    ports:
+        - "3001"
+mongodb:
+    image: mongo
+    ports:
+        - "27017:27017"
+    command: "--smallfiles"
